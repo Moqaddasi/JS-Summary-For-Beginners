@@ -1,6 +1,6 @@
 # 08-Object properties configuration
 
-# Property getters and setters
+# 8.1 Property getters and setters
 
 ```jsx
 let obj = {
