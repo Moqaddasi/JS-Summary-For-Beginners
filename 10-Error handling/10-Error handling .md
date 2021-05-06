@@ -1,6 +1,6 @@
 # 10-Error handling
 
-# Error handling, "try...catch"
+# 10.1 Error handling, "try...catch"
 
 ## The “try…catch” syntax
 
@@ -8,13 +8,9 @@ The `try...catch` construct has two main blocks: `try`, and then `catch`:
 
 ```jsx
 try {
-
   // code...
-
 } catch (err) {
-
   // error handling
-
 }
 ```
 
