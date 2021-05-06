@@ -1,26 +1,26 @@
 # 07-Advanced working with functions
 
-# Recursion and stack
+# 7.1 Recursion and stack
 
 Terms:
 
 - *Recursion* is a programming term that means calling a function from itself. Recursive functions can be used to solve tasks in elegant ways.
 
-    When a function calls itself, that’s called a *recursion step*. The *basis* of recursion is function arguments that make the task so simple that the function does not make further calls.
+  When a function calls itself, that’s called a *recursion step*. The *basis* of recursion is function arguments that make the task so simple that the function does not make further calls.
 
 - A [recursively-defined](https://en.wikipedia.org/wiki/Recursive_data_type) data structure is a data structure that can be defined using itself.
 
-    For instance, the linked list can be defined as a data structure consisting of an object referencing a list (or null).
+  For instance, the linked list can be defined as a data structure consisting of an object referencing a list (or null).
 
-    `list = { value, next -> list }`
+  `list = { value, next -> list }`
 
-    Trees like HTML elements tree or the department tree from this chapter are also naturally recursive: they branch and every branch can have other branches.
+  Trees like HTML elements tree or the department tree from this chapter are also naturally recursive: they branch and every branch can have other branches.
 
-    Recursive functions can be used to walk them as we’ve seen in the `sumSalary` example.
+  Recursive functions can be used to walk them as we’ve seen in the `sumSalary` example.
 
 Any recursive function can be rewritten into an iterative one. And that’s sometimes required to optimize stuff. But for many tasks a recursive solution is fast enough and easier to write and support.
 
-# Rest parameters and spread syntax
+# 7.2 Rest parameters and spread syntax
 
 ## Rest parameters ...
 
@@ -29,7 +29,8 @@ The rest of the parameters can be included in the function definition by using t
 For instance, to gather all arguments into array `args`:
 
 ```jsx
-function sumAll(...args) { // args is the name for the array
+function sumAll(...args) {
+  // args is the name for the array
   let sum = 0;
 
   for (let arg of args) sum += arg;
@@ -37,9 +38,9 @@ function sumAll(...args) { // args is the name for the array
   return sum;
 }
 
-alert( sumAll(1) ); // 1
-alert( sumAll(1, 2) ); // 3
-alert( sumAll(1, 2, 3) ); // 6
+alert(sumAll(1)); // 1
+alert(sumAll(1, 2)); // 3
+alert(sumAll(1, 2, 3)); // 6
 ```
 
 **The rest parameters must be at the end**
@@ -91,7 +92,7 @@ Together they help to travel between a list and an array of parameters with ease
 
 All arguments of a function call are also available in “old-style” `arguments`: array-like iterable object.
 
-# Variable scope, closure
+# 7.3 Variable scope, closure
 
 ## Code blocks
 
@@ -132,15 +133,13 @@ We can use it to organize our code, like this:
 
 ```jsx
 function sayHiBye(firstName, lastName) {
-
   // helper nested function to use below
   function getFullName() {
     return firstName + " " + lastName;
   }
 
-  alert( "Hello, " + getFullName() );
-  alert( "Bye, " + getFullName() );
-
+  alert("Hello, " + getFullName());
+  alert("Bye, " + getFullName());
 }
 ```
 
@@ -148,13 +147,13 @@ function sayHiBye(firstName, lastName) {
 
 There is a general programming term “closure”, that developers generally should know.
 
-A [closure](https://en.wikipedia.org/wiki/Closure_(computer_programming)) is a function that remembers its outer variables and can access them. In some languages, that’s not possible, or a function should be written in a special way to make it happen. But as explained above, in JavaScript, all functions are naturally closures (there is only one exception, to be covered in [The "new Function" syntax](https://javascript.info/new-function)).
+A [closure](<https://en.wikipedia.org/wiki/Closure_(computer_programming)>) is a function that remembers its outer variables and can access them. In some languages, that’s not possible, or a function should be written in a special way to make it happen. But as explained above, in JavaScript, all functions are naturally closures (there is only one exception, to be covered in [The "new Function" syntax](https://javascript.info/new-function)).
 
 That is: they automatically remember where they were created using a hidden `[[Environment]]` property, and then their code can access outer variables.
 
 When on an interview, a frontend developer gets a question about “what’s a closure?”, a valid answer would be a definition of the closure and an explanation that all functions in JavaScript are closures, and maybe a few more words about technical details: the `[[Environment]]` property and how Lexical Environments work.
 
-# Function object, NFE
+# 7.4 Function object, NFE
 
 Functions are objects.
 
@@ -171,7 +170,7 @@ They create a “main” function and attach many other “helper” functions t
 
 So, a function can do a useful job by itself and also carry a bunch of other functionality in properties.
 
-# Arrow functions revisited
+# 7.5 Arrow functions revisited
 
 ### Arrow functions have no “this”
 
@@ -237,13 +236,13 @@ For instance, `defer(f, ms)` gets a function and returns a wrapper around it t
 
 ```jsx
 function defer(f, ms) {
-  return function() {
+  return function () {
     setTimeout(() => f.apply(this, arguments), ms);
   };
 }
 
 function sayHi(who) {
-  alert('Hello, ' + who);
+  alert("Hello, " + who);
 }
 
 let sayHiDeferred = defer(sayHi, 2000);
@@ -254,9 +253,9 @@ The same without an arrow function would look like:
 
 ```jsx
 function defer(f, ms) {
-  return function(...args) {
+  return function (...args) {
     let ctx = this;
-    setTimeout(function() {
+    setTimeout(function () {
       return f.apply(ctx, args);
     }, ms);
   };
