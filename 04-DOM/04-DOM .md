@@ -4,7 +4,7 @@
 
 You should read more about DOM
 
-# Walking the DOM
+# 4.1 Walking the DOM
 
 Given a DOM node, we can go to its immediate neighbors using navigation properties.
 
@@ -13,7 +13,7 @@ There are two main sets of them:
 - For all nodes: `parentNode`, `childNodes`, `firstChild`, `lastChild`, `previousSibling`, `nextSibling`.
 - For element nodes only: `parentElement`, `children`, `firstElementChild`, `lastElementChild`, `previousElementSibling`, `nextElementSibling`.
 
-# Searching: getElement*, querySelector*
+# 4.2 Searching: getElement*, querySelector*
 
 ## document.getElementById or just id
 
@@ -61,7 +61,7 @@ The call to `elem.querySelector(css)` returns the first element for the given 
 
 In other words, the result is the same as `elem.querySelectorAll(css)[0]`, but the latter is looking for *all* elements and picking one, while `elem.querySelector` just looks for one. So it’s faster and also shorter to write.
 
-## getElementsBy*
+## getElementsBy\*
 
 There are also other methods to look for nodes by a tag, class, etc.
 
@@ -103,7 +103,7 @@ And let’s mention one more method here to check for the child-parent relations
 
 - `elemA.contains(elemB)` returns true if `elemB` is inside `elemA` (a descendant of `elemA`) or when `elemA==elemB`.
 
-# Node properties: type, tag and contents
+# 4.3 Node properties: type, tag and contents
 
 Each DOM node belongs to a certain class. The classes form a hierarchy. The full set of properties and methods come as the result of inheritance.
 
@@ -127,7 +127,7 @@ DOM nodes also have other properties depending on their class. For instance, `<
 
 20However, HTML attributes and DOM properties are not always the same, as we’ll see in the next chapter.
 
-# Attributes and properties
+# 4.4 Attributes and properties
 
 - Attributes – is what’s written in HTML.
 - Properties – is what’s in DOM objects.
@@ -149,55 +149,59 @@ For most situations using DOM properties is preferable. We should refer to attri
 - We need a non-standard attribute. But if it starts with `data-`, then we should use `dataset`.
 - We want to read the value “as written” in HTML. The value of the DOM property may be different, for instance the `href` property is always a full URL, and we may want to get the “original” value.
 
-# Modifying the document
+# 4.5 Modifying the document
 
 - Methods to create new nodes:
-    - `document.createElement(tag)` – creates an element with the given tag,
-    - `document.createTextNode(value)` – creates a text node (rarely used),
-    - `elem.cloneNode(deep)` – clones the element, if `deep==true` then with all descendants.
+  - `document.createElement(tag)` – creates an element with the given tag,
+  - `document.createTextNode(value)` – creates a text node (rarely used),
+  - `elem.cloneNode(deep)` – clones the element, if `deep==true` then with all descendants.
 - Insertion and removal:
-    - `node.append(...nodes or strings)` – insert into `node`, at the end,
-    - `node.prepend(...nodes or strings)` – insert into `node`, at the beginning,
-    - `node.before(...nodes or strings)` –- insert right before `node`,
-    - `node.after(...nodes or strings)` –- insert right after `node`,
-    - `node.replaceWith(...nodes or strings)` –- replace `node`.
-    - `node.remove()` –- remove the `node`.
 
-    Text strings are inserted “as text”.
+  - `node.append(...nodes or strings)` – insert into `node`, at the end,
+  - `node.prepend(...nodes or strings)` – insert into `node`, at the beginning,
+  - `node.before(...nodes or strings)` –- insert right before `node`,
+  - `node.after(...nodes or strings)` –- insert right after `node`,
+  - `node.replaceWith(...nodes or strings)` –- replace `node`.
+  - `node.remove()` –- remove the `node`.
+
+  Text strings are inserted “as text”.
 
 - There are also “old school” methods:
-    - `parent.appendChild(node)`
-    - `parent.insertBefore(node, nextSibling)`
-    - `parent.removeChild(node)`
-    - `parent.replaceChild(newElem, node)`
 
-    All these methods return `node`.
+  - `parent.appendChild(node)`
+  - `parent.insertBefore(node, nextSibling)`
+  - `parent.removeChild(node)`
+  - `parent.replaceChild(newElem, node)`
+
+  All these methods return `node`.
 
 - Given some HTML in `html`, `elem.insertAdjacentHTML(where, html)` inserts it depending on the value of `where`:
-    - `"beforebegin"` – insert `html` right before `elem`,
-    - `"afterbegin"` – insert `html` into `elem`, at the beginning,
-    - `"beforeend"` – insert `html` into `elem`, at the end,
-    - `"afterend"` – insert `html` right after `elem`.
 
-    Also there are similar methods, `elem.insertAdjacentText` and `elem.insertAdjacentElement`, that insert text strings and elements, but they are rarely used.
+  - `"beforebegin"` – insert `html` right before `elem`,
+  - `"afterbegin"` – insert `html` into `elem`, at the beginning,
+  - `"beforeend"` – insert `html` into `elem`, at the end,
+  - `"afterend"` – insert `html` right after `elem`.
+
+  Also there are similar methods, `elem.insertAdjacentText` and `elem.insertAdjacentElement`, that insert text strings and elements, but they are rarely used.
 
 - To append HTML to the page before it has finished loading:
-    - `document.write(html)`
 
-    After the page is loaded such a call erases the document. Mostly seen in old scripts.
+  - `document.write(html)`
 
-    # Styles and classes
+  After the page is loaded such a call erases the document. Mostly seen in old scripts.
 
-    To manage classes, there are two DOM properties:
+  # 4.6 Styles and classes
 
-    - `className` – the string value, good to manage the whole set of classes.
-    - `classList` – the object with methods `add/remove/toggle/contains`, good for individual classes.
+  To manage classes, there are two DOM properties:
 
-    To change the styles:
+  - `className` – the string value, good to manage the whole set of classes.
+  - `classList` – the object with methods `add/remove/toggle/contains`, good for individual classes.
 
-    - The `style` property is an object with camelCased styles. Reading and writing to it has the same meaning as modifying individual properties in the `"style"` attribute. To see how to apply `important` and other rare stuff – there’s a list of methods at [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration).
-    - The `style.cssText` property corresponds to the whole `"style"` attribute, the full string of styles.
+  To change the styles:
 
-    To read the resolved styles (with respect to all classes, after all CSS is applied and final values are calculated):
+  - The `style` property is an object with camelCased styles. Reading and writing to it has the same meaning as modifying individual properties in the `"style"` attribute. To see how to apply `important` and other rare stuff – there’s a list of methods at [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration).
+  - The `style.cssText` property corresponds to the whole `"style"` attribute, the full string of styles.
 
-    - The `getComputedStyle(elem, [pseudo])` returns the style-like object with them. Read-only.
+  To read the resolved styles (with respect to all classes, after all CSS is applied and final values are calculated):
+
+  - The `getComputedStyle(elem, [pseudo])` returns the style-like object with them. Read-only.
