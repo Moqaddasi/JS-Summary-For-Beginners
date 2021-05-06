@@ -1,6 +1,6 @@
 # 02-Objects: the basics
 
-# Objects
+# 2.1 Objects
 
 In contrast, objects are used to store keyed collections of various data and more complex entities. In JavaScript, objects penetrate almost every aspect of the language. So we must understand them first before going in-depth anywhere else.
 
@@ -9,9 +9,10 @@ An object can be created with figure brackets `{…}` with an optional list of
 ### Literals and properties
 
 ```jsx
-let user = {     // an object
-  name: "John",  // by key "name" store value "John"
-  age: 30        // by key "age" store value 30
+let user = {
+  // an object
+  name: "John", // by key "name" store value "John"
+  age: 30, // by key "age" store value 30
 };
 ```
 
@@ -24,8 +25,8 @@ Property values are accessible using the dot notation:
 
 ```jsx
 // get property values of the object:
-alert( user.name ); // John
-alert( user.age ); // 30
+alert(user.name); // John
+alert(user.age); // 30
 ```
 
 To remove a property, we can use `delete` operator:
@@ -36,12 +37,12 @@ To remove a property, we can use `delete` operator:
 
 ```jsx
 // this would give a syntax error
-user.likes birds = true            
+user.likes birds = true
 ```
 
 JavaScript doesn’t understand that. It thinks that we address user.likes, and then gives a syntax error when comes across unexpected birds.
 
-The dot requires the key to be a valid variable identifier. That implies: contains no spaces, doesn’t start with a digit and doesn’t include special characters ($ and _ are allowed).
+The dot requires the key to be a valid variable identifier. That implies: contains no spaces, doesn’t start with a digit and doesn’t include special characters ($ and \_ are allowed).
 
 There’s an alternative “square bracket notation” that works with any string:
 
@@ -109,10 +110,10 @@ But for an object property, there’s no such restriction
 let obj = {
   for: 1,
   let: 2,
-  return: 3
+  return: 3,
 };
 
-alert( obj.for + obj.let + obj.return );  // 6
+alert(obj.for + obj.let + obj.return); // 6
 ```
 
 ### Property existence test, “in” operator
@@ -120,8 +121,8 @@ alert( obj.for + obj.let + obj.return );  // 6
 ```jsx
 let user = { name: "John", age: 30 };
 
-alert( "age" in user ); // true, user.age exists
-alert( "blabla" in user ); // false, user.blabla doesn't exist
+alert("age" in user); // true, user.age exists
+alert("blabla" in user); // false, user.blabla doesn't exist
 ```
 
 Please note that on the left side of in there must be a *property name*. That’s usually a quoted string.
@@ -134,12 +135,12 @@ It’s when an object property exists, but stores `undefined`:
 
 ```jsx
 let obj = {
-  test: undefined
+  test: undefined,
 };
 
-alert( obj.test ); // it's undefined, so - no such property?
+alert(obj.test); // it's undefined, so - no such property?
 
-alert( "test" in obj ); // true, the property does exist!
+alert("test" in obj); // true, the property does exist!
 ```
 
 ### The “for…in” loop
@@ -150,14 +151,14 @@ To walk over all keys of an object, there exists a special form of the loop: for
 let user = {
   name: "John",
   age: 30,
-  isAdmin: true
+  isAdmin: true,
 };
 
 for (let key in user) {
   // keys
-  alert( key );  // name, age, isAdmin
+  alert(key); // name, age, isAdmin
   // values for the keys
-  alert( user[key] ); // John, 30, true
+  alert(user[key]); // John, 30, true
 }
 ```
 
@@ -198,14 +199,14 @@ They have their special features that we’ll study later. Sometimes people say 
 
 Objects in JavaScript are very powerful. Here we’ve just scratched the surface of a topic that is really huge. We’ll be closely working with objects and learning more about them in further parts of the tutorial.
 
-# Object references and copying
+# 2.2 Object references and copying
 
 When an object variable is copied, the reference is copied, but the object itself is not duplicated.
 
 ```jsx
 let user = { name: "John" };
 
-let admin = user
+let admin = user;
 ```
 
 We can use either variable to access the object and modify its contents:
@@ -215,7 +216,7 @@ let user = { name: 'John' };
 
 let admin = user;
 
-*admin.name = 'Pete'; /* changed by the "admin" reference*alert(*user.name*); // \'Pete', 
+*admin.name = 'Pete'; /* changed by the "admin" reference*alert(*user.name*); // \'Pete',
 changes are seen from the "user" reference*/
 ```
 
@@ -227,8 +228,8 @@ For instance, here `a` and `b` reference the same object, thus they are equa
 let a = {};
 let b = a; // copy the reference
 
-alert( a == b ); // true, both variables reference the same object
-alert( a === b ); // true
+alert(a == b); // true, both variables reference the same object
+alert(a === b); // true
 ```
 
 And here two independent objects are not equal, even though they look alike (both are empty):
@@ -237,7 +238,7 @@ And here two independent objects are not equal, even though they look alike (bot
 let a = {};
 let b = {}; // two independent objects
 
-alert( a == b ); // false
+alert(a == b); // false
 ```
 
 For comparisons like `obj1 > obj2` or for a comparison against a primitive `obj == 5`, objects are converted to primitives. We’ll study how object conversions work very soon, but to tell the truth, such comparisons are needed very rarely – usually they appear as a result of a programming mistake.
@@ -303,11 +304,11 @@ let user = {
   name: "John",
   sizes: {
     height: 182,
-    width: 50
-  }
+    width: 50,
+  },
 };
 
-alert( user.sizes.height ); // 182
+alert(user.sizes.height); // 182
 ```
 
 Now it’s not enough to copy `clone.sizes = user.sizes`, because the `user.sizes` is an object, it will be copied by reference. So `clone` and `user` will share the same sizes:
@@ -319,16 +320,16 @@ let user = {
   name: "John",
   sizes: {
     height: 182,
-    width: 50
-  }
+    width: 50,
+  },
 };
 
 let clone = Object.assign({}, user);
 
-alert( user.sizes === clone.sizes ); // true, same object
+alert(user.sizes === clone.sizes); // true, same object
 
 // user and clone share sizes
-user.sizes.width++;       // change a property from one place
+user.sizes.width++; // change a property from one place
 alert(clone.sizes.width); // 51, see the result from the other one
 ```
 
@@ -338,9 +339,9 @@ Objects are assigned and copied by reference. In other words, a variable stores 
 
 All operations via copied references (like adding/removing properties) are performed on the same single object.
 
-To make a “real copy” (a clone) we can use `Object.assign` for the so-called “shallow copy” (nested objects are copied by reference) or a “deep cloning” function, such as [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
+To make a “real copy” (a clone) we can use `Object.assign` for the so-called “shallow copy” (nested objects are copied by reference) or a “deep cloning” function, such as [\_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
 
-# Object methods, "this"
+# 2.3 Object methods, "this"
 
 To access the object, a method can use the this keyword.
 
@@ -410,7 +411,7 @@ let user = {
   sayHi() {
     let arrow = () => alert(this.firstName);
     arrow();
-  }
+  },
 };
 
 user.sayHi(); // Ilya
@@ -432,7 +433,7 @@ The value of `this` is defined at run-time.
 
 Please note that arrow functions are special: they have no `this`. When `this` is accessed inside an arrow function, it is taken from outside.
 
-# Constructor, operator "new"
+# 2.4 Constructor, operator "new"
 
 ## Constructor function
 
@@ -461,7 +462,7 @@ When a function is executed with `new`, it does the following steps:
 
 ### Return from constructors
 
-# Optional chaining '?.'
+# 2.5 Optional chaining '?.'
 
 The optional chaining ?. is a safe way to access nested object properties, even if an intermediate property doesn’t exist.
 
@@ -489,7 +490,7 @@ Here’s the safe way to access `user.address.street` using `?.`:
 ```jsx
 let user = {}; // user has no address
 
-alert( user?.address?.street ); // undefined (no error)
+alert(user?.address?.street); // undefined (no error)
 ```
 
 ### Short-circuiting
