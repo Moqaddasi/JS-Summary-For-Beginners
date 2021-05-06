@@ -1,6 +1,6 @@
 # 09-Classes
 
-# Class basic syntax
+# 9.1 Class basic syntax
 
 ## **The “class” syntax**
 
@@ -25,7 +25,6 @@ For example:
 
 ```jsx
 class User {
-
   constructor(name) {
     this.name = name;
   }
@@ -33,7 +32,6 @@ class User {
   sayHi() {
     alert(this.name);
   }
-
 }
 
 // Usage:
@@ -89,7 +87,7 @@ alert(user.name); // John
 user = new User(""); // Name is too short.
 ```
 
-# Static properties and methods
+# 9.2 Static properties and methods
 
 Static methods are used for the functionality that belongs to the class “as a whole”. It doesn’t relate to a concrete class instance.
 
