@@ -2,7 +2,7 @@
 
 attention : You should read more about events and practice more
 
-# Introduction to browser events
+# 5.1 Introduction to browser events
 
 There are 3 ways to assign event handlers:
 
@@ -20,7 +20,7 @@ No matter how you assign the handler – it gets an event object as the first ar
 
 We’ll learn more about events in general and about different types of events in the next chapters.
 
-# Bubbling and capturing
+# 5.2 Bubbling and capturing
 
 When an event happens – the most nested element where it happens gets labeled as the “target element” (`event.target`).
 
@@ -44,7 +44,7 @@ The same for event handlers. The code that set the handler on a particular eleme
 
 Bubbling and capturing lay the foundation for “event delegation” – an extremely powerful event handling pattern that we study in the next chapter.
 
-# Event delegation
+# 5.3 Event delegation
 
 Event delegation is really cool! It’s one of the most helpful patterns for DOM events.
 
@@ -56,7 +56,7 @@ The algorithm:
 2. In the handler – check the source element `event.target`.
 3. If the event happened inside an element that interests us, then handle the event.
 
-# Browser default actions
+# 5.4 Browser default actions
 
 There are many default browser actions:
 
@@ -64,7 +64,7 @@ There are many default browser actions:
 - `click` on `<input type="checkbox">` – checks/unchecks the `input`.
 - `submit` – clicking an `<input type="submit">` or hitting  inside a form field causes this event to happen, and the browser submits the form after it.
 
-    Enter
+  Enter
 
 - `keydown` – pressing a key may lead to adding a character into a field, or other actions.
 - `contextmenu` – the event happens on a right-click, the action is to show the browser context menu.
@@ -78,7 +78,7 @@ The `passive: true` option of `addEventListener` tells the browser that the 
 
 If the default action was prevented, the value of `event.defaultPrevented` becomes `true`, otherwise it’s `false`.
 
-# Dispatching custom events
+# 5.5 Dispatching custom events
 
 To generate an event from code, we first need to create an event object.
 
