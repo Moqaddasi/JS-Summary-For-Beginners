@@ -2,17 +2,18 @@
 
 attention : You should read more about events and practice more
 
-# Mouse events
+# 6.1 Mouse events
 
 Mouse events have the following properties:
 
 - Button: `button`.
 - Modifier keys (`true` if pressed): `altKey`, `ctrlKey`, `shiftKey` and `metaKey` (Mac).
-    - If you want to handle , then don’t forget Mac users, they usually use , so it’s better to check `if (e.metaKey || e.ctrlKey)`.
 
-        Ctrl
+  - If you want to handle , then don’t forget Mac users, they usually use , so it’s better to check `if (e.metaKey || e.ctrlKey)`.
 
-        Cmd
+    Ctrl
+
+    Cmd
 
 - Window-relative coordinates: `clientX/clientY`.
 - Document-relative coordinates: `pageX/pageY`.
@@ -21,7 +22,7 @@ The default browser action of `mousedown` is text selection, if it’s not goo
 
 In the next chapter we’ll see more details about events that follow pointer movement and how to track element changes under it.
 
-# Moving the mouse: mouseover/out, mouseenter/leave
+# 6.2 Moving the mouse: mouseover/out, mouseenter/leave
 
 We covered events `mouseover`, `mouseout`, `mousemove`, `mouseenter` and `mouseleave`.
 
