@@ -1,15 +1,17 @@
 # 03-Data types
 
-# Methods of primitives
+# 3.1 Methods of primitives
 
-There are 7 primitive types: string, number, bigint, boolean, symbol, null and undefined.
+There are 7 primitive types:
+
+string, number, bigint, boolean, symbol, null and undefined.
 
 ## At the end
 
 - Primitives except `null` and `undefined` provide many helpful methods. We will study those in the upcoming chapters.
 - Formally, these methods work via temporary objects, but JavaScript engines are well tuned to optimize that internally, so they are not expensive to call.
 
-# Numbers
+# 3.2 Numbers
 
 To write numbers with many zeroes:
 
@@ -35,7 +37,7 @@ More mathematical functions:
 
 - See the [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) object when you need them. The library is very small, but can cover basic needs.
 
-# Strings
+# 3.3 Strings
 
 - There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
 - Strings in JavaScript are encoded using UTF-16.
@@ -52,7 +54,7 @@ There are several other helpful methods in strings:
 - `str.repeat(n)` – repeats the string `n` times.
 - …and more to be found in the [manual](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).
 
-# Arrays
+# 3.4 Arrays
 
 There are two syntaxes for creating an empty array:
 
@@ -66,21 +68,21 @@ We can get an element by its number in square brackets:
 ```jsx
 let fruits = ["Apple", "Orange", "Plum"];
 
-alert( fruits[0] ); // Apple
-alert( fruits[1] ); // Orange
-alert( fruits[2] ); // Plum
+alert(fruits[0]); // Apple
+alert(fruits[1]); // Orange
+alert(fruits[2]); // Plum
 ```
 
 The total count of the elements in the array is its length
 
 ## Methods pop/push, shift/unshift
 
-A [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) is one of the most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:
+A [queue](<https://en.wikipedia.org/wiki/Queue_(abstract_data_type)>) is one of the most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:
 
 - `push` appends an element to the end.
 - `shift` get an element from the beginning, advancing the queue, so that the 2nd element becomes the 1st.
 
-There’s another use case for arrays – the data structure named [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
+There’s another use case for arrays – the data structure named [stack](<https://en.wikipedia.org/wiki/Stack_(abstract_data_type)>).
 
 It supports two operations:
 
@@ -91,17 +93,16 @@ So new elements are added or taken always from the “end”.
 
 **Methods that work with the end of the array:**
 
-**pop** 
+**pop**
 
 Extracts the last element of the array and returns it:
 
 ```jsx
-
 let fruits = ["Apple", "Orange", "Pear"];
 
-alert( fruits.pop() ); // remove "Pear" and alert it
+alert(fruits.pop()); // remove "Pear" and alert it
 
-alert( fruits ); // Apple, Orange
+alert(fruits); // Apple, Orange
 ```
 
 **`push`**
@@ -109,12 +110,11 @@ alert( fruits ); // Apple, Orange
 Append the element to the end of the array:
 
 ```jsx
-
 let fruits = ["Apple", "Orange"];
 
 fruits.push("Pear");
 
-alert( fruits ); // Apple, Orange, Pear
+alert(fruits); // Apple, Orange, Pear
 ```
 
 Methods that work with the beginning of the array:
@@ -126,9 +126,9 @@ Extracts the first element of the array and returns it:
 ```jsx
 let fruits = ["Apple", "Orange", "Pear"];
 
-alert( fruits.shift() ); // remove Apple and alert it
+alert(fruits.shift()); // remove Apple and alert it
 
-alert( fruits ); // Orange, Pear
+alert(fruits); // Orange, Pear
 ```
 
 **`unshift`**
@@ -138,9 +138,9 @@ Add the element to the beginning of the array:
 ```jsx
 let fruits = ["Orange", "Pear"];
 
-fruits.unshift('Apple');
+fruits.unshift("Apple");
 
-alert( fruits ); // Apple, Orange, Pear
+alert(fruits); // Apple, Orange, Pear
 ```
 
 Methods `push` and `unshift` can add multiple elements at once:
@@ -152,7 +152,7 @@ fruits.push("Orange", "Peach");
 fruits.unshift("Pineapple", "Lemon");
 
 // ["Pineapple", "Lemon", "Apple", "Orange", "Peach"]
-alert( fruits );
+alert(fruits);
 ```
 
 ## Performance
@@ -168,7 +168,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 
 // iterates over array elements
 for (let fruit of fruits) {
-  alert( fruit );
+  alert(fruit);
 }
 ```
 
@@ -189,9 +189,9 @@ Let’s see how one can shoot themself in the foot:
 ```jsx
 let arr = new Array(2); // will it create an array of [2] ?
 
-alert( arr[0] ); // undefined! no elements.
+alert(arr[0]); // undefined! no elements.
 
-alert( arr.length ); // length 2
+alert(arr.length); // length 2
 ```
 
 In the code above, `new Array(number)` has all elements `undefined`.
@@ -207,8 +207,8 @@ For instance:
 ```jsx
 let arr = [1, 2, 3];
 
-alert( arr ); // 1,2,3
-alert( String(arr) === '1,2,3' ); // true
+alert(arr); // 1,2,3
+alert(String(arr) === "1,2,3"); // true
 ```
 
 ## At The End
@@ -217,15 +217,15 @@ Array is a special kind of object, suited to storing and managing ordered data i
 
 - The declaration:
 
-    ```jsx
-    // square brackets (usual)
-    let arr = [item1, item2...];
+  ```jsx
+  // square brackets (usual)
+  let arr = [item1, item2...];
 
-    // new Array (exceptionally rare)
-    let arr = new Array(item1, item2...);
-    ```
+  // new Array (exceptionally rare)
+  let arr = new Array(item1, item2...);
+  ```
 
-    The call to `new Array(number)` creates an array with the given length, but without elements.
+  The call to `new Array(number)` creates an array with the given length, but without elements.
 
 - The `length` property is the array length or, to be precise, its last numeric index plus one. It is auto-adjusted by array methods.
 - If we shorten `length` manually, the array is truncated.
@@ -249,7 +249,7 @@ Instead you can use `for..of` loop to compare arrays item-by-item.
 
 We will continue with arrays and study more methods to add, remove, extract elements and sort arrays in the next chapter [Array methods](https://javascript.info/array-methods).
 
-# Array methods
+# 3.5 Array methods
 
 ### Add/remove items
 
@@ -259,7 +259,7 @@ We already know methods that add and remove items from the beginning or the end:
 - `arr.pop()` – extracts an item from the end,
 - `arr.shift()` – extracts an item from the beginning,
 - `arr.unshift(...items)` – adds items to the beginning.
-- 
+-
 
 ## splice
 
@@ -287,7 +287,7 @@ alert( arr ) // now [*"Let's", "dance"*, "right", "now"]
 The method [arr.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) is much simpler than similar-looking `arr.splice`.
 
 ```jsx
-arr.slice([start], [end])
+arr.slice([start], [end]);
 ```
 
 It returns a new array copying to it all items from index `start` to `end` (not including `end`). Both `start` and `end` can be negative, in that case position from array end is assumed.
@@ -299,9 +299,9 @@ For instance:
 ```jsx
 let arr = ["t", "e", "s", "t"];
 
-alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
+alert(arr.slice(1, 3)); // e,s (copy from 1 to 3)
 
-alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
+alert(arr.slice(-2)); // s,t (copy from -2 till the end)
 ```
 
 ## concat
@@ -321,7 +321,7 @@ The result is a new array containing items from arr, then arg1, arg2 etc.
 The arr.forEach method allows to run a function for every element of the array.
 
 ```jsx
-arr.forEach(function(item, index, array) {
+arr.forEach(function (item, index, array) {
   // ... do something with item
 });
 ```
@@ -339,11 +339,11 @@ The methods [arr.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScri
 ```jsx
 let arr = [1, 0, false];
 
-alert( arr.indexOf(0) ); // 1
-alert( arr.indexOf(false) ); // 2
-alert( arr.indexOf(null) ); // -1
+alert(arr.indexOf(0)); // 1
+alert(arr.indexOf(false)); // 2
+alert(arr.indexOf(null)); // -1
 
-alert( arr.includes(1) ); // true
+alert(arr.includes(1)); // true
 ```
 
 ## find and findIndex
@@ -355,7 +355,7 @@ Here the [arr.find(fn)](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 The syntax is:
 
 ```jsx
-let result = arr.find(function(item, index, array) {
+let result = arr.find(function (item, index, array) {
   // if true is returned, item is returned and iteration is stopped
   // for falsy scenario returns undefined
 });
@@ -373,12 +373,12 @@ For example, we have an array of users, each with the fields `id` and `name`.
 
 ```jsx
 let users = [
-  {id: 1, name: "John"},
-  {id: 2, name: "Pete"},
-  {id: 3, name: "Mary"}
+  { id: 1, name: "John" },
+  { id: 2, name: "Pete" },
+  { id: 3, name: "Mary" },
 ];
 
-let user = users.find(item => item.id == 1);
+let user = users.find((item) => item.id == 1);
 
 alert(user.name); // John
 ```
@@ -392,7 +392,7 @@ If there may be many, we can use [arr.filter(fn)](https://developer.mozilla.org
 The syntax is similar to `find`, but `filter` returns an array of all matching elements:
 
 ```jsx
-let results = arr.filter(function(item, index, array) {
+let results = arr.filter(function (item, index, array) {
   // if true item is pushed to results and the iteration continues
   // returns empty array if nothing found
 });
@@ -402,13 +402,13 @@ For instance:
 
 ```jsx
 let users = [
-  {id: 1, name: "John"},
-  {id: 2, name: "Pete"},
-  {id: 3, name: "Mary"}
+  { id: 1, name: "John" },
+  { id: 2, name: "Pete" },
+  { id: 3, name: "Mary" },
 ];
 
 // returns array of the first two users
-let someUsers = users.filter(item => item.id < 3);
+let someUsers = users.filter((item) => item.id < 3);
 
 alert(someUsers.length); // 2
 ```
@@ -424,7 +424,7 @@ It calls the function for each element of the array and returns the array of res
 The syntax is:
 
 ```jsx
-let result = arr.map(function(item, index, array) {
+let result = arr.map(function (item, index, array) {
   // returns the new value instead of item
 });
 ```
@@ -432,7 +432,7 @@ let result = arr.map(function(item, index, array) {
 For instance, here we transform each element into its length:
 
 ```jsx
-let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
+let lengths = ["Bilbo", "Gandalf", "Nazgul"].map((item) => item.length);
 alert(lengths); // 5,7,6
 ```
 
@@ -445,12 +445,12 @@ It also returns the sorted array, but the returned value is usually ignored, as�
 For instance:
 
 ```jsx
-let arr = [ 1, 2, 15 ];
+let arr = [1, 2, 15];
 
 // the method reorders the content of arr
 arr.sort();
 
-alert( arr );  // *1, 15, 2*
+alert(arr); // *1, 15, 2*
 ```
 
 The items are sorted as strings by default.
@@ -479,7 +479,7 @@ For instance:
 let arr = [1, 2, 3, 4, 5];
 arr.reverse();
 
-alert( arr ); // 5,4,3,2,1
+alert(arr); // 5,4,3,2,1
 ```
 
 ## split and join
@@ -500,28 +500,28 @@ for (let name of arr) {
 A cheat sheet of array methods:
 
 - To add/remove elements:
-    - `push(...items)` – adds items to the end,
-    - `pop()` – extracts an item from the end,
-    - `shift()` – extracts an item from the beginning,
-    - `unshift(...items)` – adds items to the beginning.
-    - `splice(pos, deleteCount, ...items)` – at index `pos` deletes `deleteCount` elements and inserts `items`.
-    - `slice(start, end)` – creates a new array, copies elements from index `start` till `end` (not inclusive) into it.
-    - `concat(...items)` – returns a new array: copies all members of the current one and adds `items` to it. If any of `items` is an array, then its elements are taken.
+  - `push(...items)` – adds items to the end,
+  - `pop()` – extracts an item from the end,
+  - `shift()` – extracts an item from the beginning,
+  - `unshift(...items)` – adds items to the beginning.
+  - `splice(pos, deleteCount, ...items)` – at index `pos` deletes `deleteCount` elements and inserts `items`.
+  - `slice(start, end)` – creates a new array, copies elements from index `start` till `end` (not inclusive) into it.
+  - `concat(...items)` – returns a new array: copies all members of the current one and adds `items` to it. If any of `items` is an array, then its elements are taken.
 - To search among elements:
-    - `indexOf/lastIndexOf(item, pos)` – look for `item` starting from position `pos`, return the index or `1` if not found.
-    - `includes(value)` – returns `true` if the array has `value`, otherwise `false`.
-    - `find/filter(func)` – filter elements through the function, return first/all values that make it return `true`.
-    - `findIndex` is like `find`, but returns the index instead of a value.
+  - `indexOf/lastIndexOf(item, pos)` – look for `item` starting from position `pos`, return the index or `1` if not found.
+  - `includes(value)` – returns `true` if the array has `value`, otherwise `false`.
+  - `find/filter(func)` – filter elements through the function, return first/all values that make it return `true`.
+  - `findIndex` is like `find`, but returns the index instead of a value.
 - To iterate over elements:
-    - `forEach(func)` – calls `func` for every element, does not return anything.
+  - `forEach(func)` – calls `func` for every element, does not return anything.
 - To transform the array:
-    - `map(func)` – creates a new array from results of calling `func` for every element.
-    - `sort(func)` – sorts the array in-place, then returns it.
-    - `reverse()` – reverses the array in-place, then returns it.
-    - `split/join` – convert a string to array and back.
-    - `reduce/reduceRight(func, initial)` – calculate a single value over the array by calling `func` for each element and passing an intermediate result between the calls.
+  - `map(func)` – creates a new array from results of calling `func` for every element.
+  - `sort(func)` – sorts the array in-place, then returns it.
+  - `reverse()` – reverses the array in-place, then returns it.
+  - `split/join` – convert a string to array and back.
+  - `reduce/reduceRight(func, initial)` – calculate a single value over the array by calling `func` for each element and passing an intermediate result between the calls.
 - Additionally:
-    - `Array.isArray(arr)` checks `arr` for being an array.
+  - `Array.isArray(arr)` checks `arr` for being an array.
 
 Please note that methods `sort`, `reverse` and `splice` modify the array itself.
 
@@ -529,19 +529,22 @@ These methods are the most used ones, they cover 99% of use cases. But there are
 
 - [arr.some(fn)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)/[arr.every(fn)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) check the array.
 
-    The function `fn` is called on each element of the array similar to `map`. If any/all results are `true`, returns `true`, otherwise `false`.
+  The function `fn` is called on each element of the array similar to `map`. If any/all results are `true`, returns `true`, otherwise `false`.
 
-    These methods behave sort of like `||` and `&&` operators: if `fn` returns a truthy value, `arr.some()` immediately returns `true` and stops iterating over the rest of items; if `fn` returns a falsy value, `arr.every()` immediately returns `false` and stops iterating over the rest of items as well.
+  These methods behave sort of like `||` and `&&` operators: if `fn` returns a truthy value, `arr.some()` immediately returns `true` and stops iterating over the rest of items; if `fn` returns a falsy value, `arr.every()` immediately returns `false` and stops iterating over the rest of items as well.
 
-    We can use `every` to compare arrays:
+  We can use `every` to compare arrays:
 
-    ```jsx
-    function arraysEqual(arr1, arr2) {
-      return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
-    }
+  ```jsx
+  function arraysEqual(arr1, arr2) {
+    return (
+      arr1.length === arr2.length &&
+      arr1.every((value, index) => value === arr2[index])
+    );
+  }
 
-    alert( arraysEqual([1, 2], [1, 2])); // true
-    ```
+  alert(arraysEqual([1, 2], [1, 2])); // true
+  ```
 
 - [arr.fill(value, start, end)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) – fills the array with repeating `value` from index `start` to `end`.
 - [arr.copyWithin(target, start, end)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin) – copies its elements from position `start` till position `end` into *itself*, at position `target` (overwrites existing).
@@ -555,13 +558,13 @@ Look through the cheat sheet just to be aware of them. Then solve the tasks of t
 
 Afterwards whenever you need to do something with an array, and you don’t know how – come here, look at the cheat sheet and find the right method. Examples will help you to write it correctly. Soon you’ll automatically remember the methods, without specific efforts from your side.
 
-# iterable
+# 3.6 iterable
 
 Objects that can be used in `for..of` are called *iterable*.
 
 - Technically, iterables must implement the method named `Symbol.iterator`.
-    - The result of `obj[Symbol.iterator]()` is called an *iterator*. It handles further iteration process.
-    - An iterator must have the method named `next()` that returns an object `{done: Boolean, value: any}`, here `done:true` denotes the end of the iteration process, otherwise the `value` is the next value.
+  - The result of `obj[Symbol.iterator]()` is called an *iterator*. It handles further iteration process.
+  - An iterator must have the method named `next()` that returns an object `{done: Boolean, value: any}`, here `done:true` denotes the end of the iteration process, otherwise the `value` is the next value.
 - The `Symbol.iterator` method is called automatically by `for..of`, but we also can do it directly.
 - Built-in iterables like strings or arrays, also implement `Symbol.iterator`.
 - String iterator knows about surrogate pairs.
@@ -572,7 +575,7 @@ If we look inside the specification – we’ll see that most built-in methods a
 
 `Array.from(obj[, mapFn, thisArg])` makes a real `Array` from an iterable or array-like `obj`, and we can then use array methods on it. The optional arguments `mapFn` and `thisArg` allow us to apply a function to each item.
 
-# Map and Set
+# 3.7 Map and Set
 
 ## Map
 
@@ -593,16 +596,16 @@ For instance:
 ```jsx
 let map = new Map();
 
-map.set('1', 'str1');   // a string key
-map.set(1, 'num1');     // a numeric key
-map.set(true, 'bool1'); // a boolean key
+map.set("1", "str1"); // a string key
+map.set(1, "num1"); // a numeric key
+map.set(true, "bool1"); // a boolean key
 
 // remember the regular Object? it would convert keys to string
 // Map keeps the type, so these two are different:
-alert( map.get(1)   ); // 'num1'
-alert( map.get('1') ); // 'str1'
+alert(map.get(1)); // 'num1'
+alert(map.get("1")); // 'str1'
 
-alert( map.size ); // 3
+alert(map.size); // 3
 ```
 
 Map can also use objects as keys.
@@ -616,15 +619,13 @@ let visitsCountMap = new Map();
 // john is the key for the map
 visitsCountMap.set(john, 123);
 
-alert( visitsCountMap.get(john) ); // 123
+alert(visitsCountMap.get(john)); // 123
 ```
 
 Every `map.set` call returns the map itself, so we can “chain” the calls:
 
 ```jsx
-map.set('1', 'str1')
-  .set(1, 'num1')
-  .set(true, 'bool1');
+map.set("1", "str1").set(1, "num1").set(true, "bool1");
 ```
 
 ## Iteration over Map
@@ -639,9 +640,9 @@ For instance:
 
 ```jsx
 let recipeMap = new Map([
-  ['cucumber', 500],
-  ['tomatoes', 350],
-  ['onion',    50]
+  ["cucumber", 500],
+  ["tomatoes", 350],
+  ["onion", 50],
 ]);
 
 // iterate over keys (vegetables)
@@ -655,12 +656,13 @@ for (let amount of recipeMap.values()) {
 }
 
 // iterate over [key, value] entries
-for (let entry of recipeMap) { // the same as of recipeMap.entries()
+for (let entry of recipeMap) {
+  // the same as of recipeMap.entries()
   alert(entry); // cucumber,500 (and so on)
 }
 ```
 
-# Object.keys, values, entries
+# 3.8 Object.keys, values, entries
 
 For plain objects, the following methods are available:
 
@@ -671,30 +673,38 @@ For plain objects, the following methods are available:
 ```jsx
 let user = {
   name: "John",
-  age: 30
+  age: 30,
 };
 ```
 
 ```jsx
-Object.keys(user) = ["name", "age"]
+Object.keys(user) = ["name", "age"];
 ```
 
 ```jsx
-Object.values(user) = ["John", 30]
+Object.values(user) = ["John", 30];
 ```
 
 ```jsx
-	Object.entries(user) = [ ["name","John"], ["age",30] ]
+Object.entries(user) = [
+  ["name", "John"],
+  ["age", 30],
+];
 ```
 
-# Destructuring assignment
+# 3.9 Destructuring assignment
 
 ## The rest ‘…’
 
 .If we’d like also to gather all that follows – we can add one more parameter that gets “the rest” using three dots "...":
 
 ```jsx
-let [name1, name2, ...rest] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+let [name1, name2, ...rest] = [
+  "Julius",
+  "Caesar",
+  "Consul",
+  "of the Roman Republic",
+];
 
 // rest is array of items, starting from the 3rd one
 alert(rest[0]); // Consul
@@ -710,19 +720,19 @@ We can use the rest pattern, just like we did with arrays. It’s not supported 
 let options = {
   title: "Menu",
   height: 200,
-  width: 100
+  width: 100,
 };
 
 // title = property named title
 // rest = object with the rest of properties
-let {title, ...rest} = options;
+let { title, ...rest } = options;
 
 // now title="Menu", rest={height: 200, width: 100}
-alert(rest.height);  // 200
-alert(rest.width);   // 100
+alert(rest.height); // 200
+alert(rest.width); // 100
 ```
 
-# Date and time
+# 3.10 Date and time
 
 - Date and time in JavaScript are represented with the [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. We can’t create “only date” or “only time”: `Date` objects always carry both.
 - Months are counted from zero (yes, January is a zero month).
@@ -731,7 +741,7 @@ alert(rest.width);   // 100
 - Dates can be subtracted, giving their difference in milliseconds. That’s because a `Date` becomes the timestamp when converted to a number.
 - Use `Date.now()` to get the current timestamp fast.
 
-# JSON methods, toJSON
+# 3.11 JSON methods, toJSON
 
 ```jsx
 JSON.stringify to convert objects into JSON.
@@ -769,89 +779,90 @@ JSON supports following data types:
 - Objects `{ ... }`
 - Arrays `[ ... ]`
 - Primitives:
-    - strings,
-    - numbers,
-    - boolean values `true/false`,
-    - `null`.
 
-    ## Excluding and transforming: replacer
+  - strings,
+  - numbers,
+  - boolean values `true/false`,
+  - `null`.
 
-    The full syntax of `JSON.stringify` is:
+  ## Excluding and transforming: replacer
 
-    ```jsx
-    let json = JSON.stringify(value[, replacer, space])
-    ```
+  The full syntax of `JSON.stringify` is:
 
-    **value**A value to encode.**replacer**Array of properties to encode or a mapping function `function(key, value)`.**space**Amount of space to use for formatting
+  ```jsx
+  let json = JSON.stringify(value[, replacer, space])
+  ```
 
-    ```jsx
-    let room = {
-      number: 23
-    };
+  **value**A value to encode.**replacer**Array of properties to encode or a mapping function `function(key, value)`.**space**Amount of space to use for formatting
 
-    let meetup = {
-      title: "Conference",
-      participants: [{name: "John"}, {name: "Alice"}],
-      place: room // meetup references room
-    };
+  ```jsx
+  let room = {
+    number: 23,
+  };
 
-    room.occupiedBy = meetup; // room references meetup
+  let meetup = {
+    title: "Conference",
+    participants: [{ name: "John" }, { name: "Alice" }],
+    place: room, // meetup references room
+  };
 
-    alert( JSON.stringify(meetup, ['title', 'participants']) );
-    // {"title":"Conference","participants":[{},{}]}
-    ```
+  room.occupiedBy = meetup; // room references meetup
 
-    ## Custom “toJSON”
+  alert(JSON.stringify(meetup, ["title", "participants"]));
+  // {"title":"Conference","participants":[{},{}]}
+  ```
 
-    Like toString for string conversion, an object may provide method toJSON for to-JSON conversion. JSON.stringify automatically calls it if available.
+  ## Custom “toJSON”
 
-    ```jsx
-    let room = {
-      number: 23,
-      toJSON() {
-        return this.number;
-      }
-    };
+  Like toString for string conversion, an object may provide method toJSON for to-JSON conversion. JSON.stringify automatically calls it if available.
 
-    let meetup = {
-      title: "Conference",
-      room
-    };
+  ```jsx
+  let room = {
+    number: 23,
+    toJSON() {
+      return this.number;
+    },
+  };
 
-    alert( JSON.stringify(room) ); // 23
+  let meetup = {
+    title: "Conference",
+    room,
+  };
 
-    alert( JSON.stringify(meetup) );
-    /*
-      {
-        "title":"Conference",
-        "room": 23
-      }
-    */
-    ```
+  alert(JSON.stringify(room)); // 23
 
-    ## JSON.parse
+  alert(JSON.stringify(meetup));
+  /*
+    {
+      "title":"Conference",
+      "room": 23
+    }
+  */
+  ```
 
-    To decode a JSON-string, we need another method named [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse).
+  ## JSON.parse
 
-    The syntax:
+  To decode a JSON-string, we need another method named [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse).
 
-    ```jsx
-    let value = JSON.parse(str, [reviver]);
-    ```
+  The syntax:
 
-    **str**
+  ```jsx
+  let value = JSON.parse(str, [reviver]);
+  ```
 
-    JSON-string to parse.
+  **str**
 
-    **reviver**
+  JSON-string to parse.
 
-    Optional function(key,value) that will be called for each `(key, value)` pair and can transform the value.
+  **reviver**
 
-    ```jsx
-    // stringified array
-    let numbers = "[0, 1, 2, 3]";
+  Optional function(key,value) that will be called for each `(key, value)` pair and can transform the value.
 
-    numbers = JSON.parse(numbers);
+  ```jsx
+  // stringified array
+  let numbers = "[0, 1, 2, 3]";
 
-    alert( numbers[1] ); // 1
-    ```
+  numbers = JSON.parse(numbers);
+
+  alert(numbers[1]); // 1
+  ```
