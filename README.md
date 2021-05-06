@@ -1,29 +1,29 @@
 # JS-Summary-For-Beginners
 ### notion link : https://www.notion.so/JS-Summary-For-Beginners-9992a48049f248d7adc870e51ff208a8
 
-## 01- JS FUNDAMENTAL
+# 01- JS FUNDAMENTAL
 
-### [use strict](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [use strict](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
 ## [variables](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [type OF](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [type OF](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [IF](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [IF](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [Logical operators](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [Logical operators](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [Conclusion operator](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [Conclusion operator](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [Loops](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [Loops](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [The “switch” construct](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [The “switch” construct](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [Functions](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [Functions](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [Function expressions](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [Function expressions](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
-### [Arrow functions](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
+## [Arrow functions](https://www.notion.so/01-JS-FUNDAMENTAL-ad0881f9112e446287bc23379dbe9ffe)
 
 # 02-Objects: the basics
 
